@@ -1,7 +1,6 @@
 from rest_framework import generics, viewsets
 from .models import Course, Lesson
-from .serializers import CourseSerializer, LessonSerializer
-
+from .serializers import CoursesSerializer, LessonSerializer
 
 # Представления для курсов
 
@@ -11,32 +10,7 @@ from courses.models import Course
 from courses.serializers import CourseSerializer
 
 
-class CourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-
-class CourseListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-
-class CourseRetrieveAPIView(generics.RetrieveAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-
-class CourseCreateAPIView(generics.CreateAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-
-class CourseUpdateAPIView(generics.UpdateAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-
-class CourseDestroyAPIView(generics.DestroyAPIView):
+class CoursesViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 

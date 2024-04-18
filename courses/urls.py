@@ -1,9 +1,9 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from courses.views import CourseViewSet
+from courses.views import CoursesViewSet
 
-from courses.views import CourseViewSet, CourseListCreateAPIView, CourseRetrieveAPIView, CourseCreateAPIView, \
+from courses.views import CoursesViewSet, CourseListCreateAPIView, CourseRetrieveAPIView, CourseCreateAPIView, \
     CourseUpdateAPIView, CourseDestroyAPIView, LessonListCreateAPIView, LessonRetrieveAPIView, LessonCreateAPIView, \
     LessonUpdateAPIView, LessonDestroyAPIView
 
@@ -11,7 +11,7 @@ app_name = 'courses'
 
 # Создаем маршрутизатор
 router = DefaultRouter()
-router.register(r'courses', CourseViewSet, basename='course')
+router.register(r'courses', CoursesViewSet, basename='course')
 
 urlpatterns = [
     # URL-маршруты для курсов
