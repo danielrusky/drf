@@ -1,26 +1,17 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from courses.views import CoursesViewSet
-
-from courses.views import CoursesViewSet, CourseListCreateAPIView, CourseRetrieveAPIView, CourseCreateAPIView, \
-    CourseUpdateAPIView, CourseDestroyAPIView, LessonListCreateAPIView, LessonRetrieveAPIView, LessonCreateAPIView, \
+from courses.apps import CoursesConfig
+from courses.views import CoursesViewSet, LessonListCreateAPIView, LessonRetrieveAPIView, LessonCreateAPIView, \
     LessonUpdateAPIView, LessonDestroyAPIView
 
-app_name = 'courses'
+app_name = CoursesConfig.name
 
 # Создаем маршрутизатор
 router = DefaultRouter()
-router.register(r'courses', CoursesViewSet, basename='course')
+router.register(r'courses', CoursesViewSet, basename='courses')
 
 urlpatterns = [
-    # URL-маршруты для курсов
-    path('courses/', CourseListCreateAPIView.as_view(), name='course-list-create'),
-    path('courses/<int:pk>/', CourseRetrieveAPIView.as_view(), name='course-retrieve'),
-    path('courses/create/', CourseCreateAPIView.as_view(), name='course-create'),
-    path('courses/<int:pk>/update/', CourseUpdateAPIView.as_view(), name='course-update'),
-    path('courses/<int:pk>/delete/', CourseDestroyAPIView.as_view(), name='course-delete'),
-
     # URL-маршруты для уроков
     path('lessons/', LessonListCreateAPIView.as_view(), name='lesson-list-create'),
     path('lessons/<int:pk>/', LessonRetrieveAPIView.as_view(), name='lesson-retrieve'),
